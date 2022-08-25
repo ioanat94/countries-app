@@ -12,7 +12,7 @@ function TableRow({ data }: TableRowProps) {
       <td className='min-w-[150px]'>
         <ul className='list-disc'>
           {data.languages.map((language) => (
-            <li>{language}</li>
+            <li key={language}>{language}</li>
           ))}
         </ul>
       </td>

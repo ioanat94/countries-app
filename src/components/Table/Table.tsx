@@ -10,7 +10,7 @@ function Table() {
         <TableHead />
         <tbody className='text-greyishBlueLight'>
           {dummyData.map((data) => (
-            <TableRow data={data} />
+            <TableRow key={data.id} data={data} />
           ))}
         </tbody>
       </table>
