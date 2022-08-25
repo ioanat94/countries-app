@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+
 import { TableRowProps } from '../../types'
 import AddFavoriteBtn from '../AddFavoriteBtn/AddFavoriteBtn'
 

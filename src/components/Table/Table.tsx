@@ -1,7 +1,8 @@
 import React from 'react'
+
 import TableHead from '../TableHead/TableHead'
-import dummyData from '../../dummyData'
 import TableRow from '../TableRow/TableRow'
+import dummyData from '../../dummyData'
 
 function Table() {
   return (
