@@ -1,14 +1,12 @@
 import React from 'react'
 
 import './output.css'
-import Home from './pages/Home'
+import Routes from './Routes'
 
-function App() {
+export default function App() {
   return (
-    <div>
-      <Home />
-    </div>
+    <>
+      <Routes />
+    </>
   )
 }
-
-export default App

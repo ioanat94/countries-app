@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import { TableRowProps } from '../../types'
 import AddFavoriteBtn from '../AddFavoriteBtn/AddFavoriteBtn'
 
@@ -8,7 +9,11 @@ function TableRow({ data }: TableRowProps) {
       <td className='min-w-[150px]'>
         <img src={data.flag} alt={`Flag of ${data.name}`} className='w-20' />
       </td>
-      <td className='min-w-[150px]'>{data.name}</td>
+      <td className='min-w-[150px]'>
+        <Link to={`/countries/${data.id}`} className='hover:underline'>
+          {data.name}
+        </Link>
+      </td>
       <td className='min-w-[150px]'>
         <ul className='list-disc'>
           {data.languages.map((language) => (
