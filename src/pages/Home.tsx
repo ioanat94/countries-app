@@ -10,7 +10,11 @@ function Home() {
   const theme = useSelector((state: RootState) => state.theme.theme)
 
   return (
-    <div className={`${theme === 'dark' ? 'bg-darkBlue' : 'bg-greyishBlue'}`}>
+    <div
+      className={`${
+        theme === 'dark' ? 'bg-darkBlue' : 'bg-greyishBlue'
+      } min-h-screen`}
+    >
       <Navbar />
       <Table />
       <FavoritesSlider />
