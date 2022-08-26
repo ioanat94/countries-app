@@ -39,6 +39,20 @@ export const fetchCountriesThunk = createAsyncThunk(
   }
 )
 
+export const fetchCountryThunk = createAsyncThunk(
+  'country/fetch',
+  async (name: string) => {
+    const res = await axios.get(
+      `https://restcountries.com/v3.1/name/${name}?fields=flags,name,languages,population,region`
+    )
+
+    return {
+      data: res.data,
+      status: res.status,
+    }
+  }
+)
+
 export const countriesSlice = createSlice({
   name: 'countries',
   initialState,
@@ -52,9 +66,15 @@ export const countriesSlice = createSlice({
       state.items = action.payload.data
       state.isLoading = false
     })
+    builder.addCase(fetchCountryThunk.pending, (state) => {
+      state.items = []
+      state.isLoading = true
+    })
+    builder.addCase(fetchCountryThunk.fulfilled, (state, action) => {
+      state.items = action.payload.data
+      state.isLoading = false
+    })
   },
 })
-
-//export const { } = countrySlice.actions
 
 export default countriesSlice.reducer

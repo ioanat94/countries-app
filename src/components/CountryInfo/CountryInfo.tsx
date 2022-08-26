@@ -1,15 +1,29 @@
-import React from 'react'
-import { useSelector } from 'react-redux'
-
+import React, { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { useParams } from 'react-router-dom'
+import { fetchCountryThunk } from '../../redux/slices/countriesSlice'
 import { RootState } from '../../redux/store'
+
+type ParamTypes = {
+  name: string
+}
 
 function CountryInfo() {
   const theme = useSelector((state: RootState) => state.theme.theme)
+  const dispatch = useDispatch()
+  const { countries } = useSelector((state: RootState) => state)
+  const { name } = useParams<ParamTypes>()
 
-  return (
+  useEffect(() => {
+    dispatch(fetchCountryThunk(name))
+  }, [dispatch, name])
+
+  const country = countries.items[0]
+
+  return country ? (
     <div className='flex flex-col justify-center gap-10 pb-10 md:flex-row'>
       <img
-        src='https://flagcdn.com/w320/fi.png'
+        src={country.flags.png}
         alt='Country flag'
         className='drop-shadow-2xl'
       />
@@ -22,29 +36,32 @@ function CountryInfo() {
           <tbody>
             <tr className='h-14'>
               <td className='font-bold'>Name:</td>
-              <td>Finland</td>
+              <td>{country.name.common}</td>
             </tr>
             <tr className='h-14'>
               <td className='font-bold'>Languages:</td>
               <td>
                 <ul>
-                  <li>Finnish</li>
-                  <li>Swedish</li>
+                  {Object.values(country.languages).map((language) => (
+                    <li key={language}>{language}</li>
+                  ))}
                 </ul>
               </td>
             </tr>
             <tr className='h-14'>
               <td className='font-bold'>Population:</td>
-              <td>5,530,719</td>
+              <td>{country.population.toLocaleString()}</td>
             </tr>
             <tr className='h-14'>
               <td className='font-bold'>Region:</td>
-              <td>Europe</td>
+              <td>{country.region}</td>
             </tr>
           </tbody>
         </table>
       </div>
     </div>
+  ) : (
+    <></>
   )
 }
 export default CountryInfo

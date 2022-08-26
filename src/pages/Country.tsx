@@ -10,9 +10,9 @@ function Country() {
 
   return (
     <div
-      className={`h-screen ${
+      className={`${
         theme === 'dark' ? 'bg-darkBlue' : 'bg-greyishBlue'
-      }`}
+      } min-h-screen`}
     >
       <Navbar />
       <CountryCard />

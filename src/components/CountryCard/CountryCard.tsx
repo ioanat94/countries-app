@@ -10,7 +10,7 @@ function CountryCard() {
 
   return (
     // Wrapping divs to center card on page
-    <div className='flex items-center justify-center pt-14 md:h-screen md:pt-0'>
+    <div className='flex items-center justify-center pt-14 md:h-[calc(100vh-80px)] md:min-h-[450px] md:pt-0'>
       <div
         className={`${
           theme === 'dark' ? 'bg-greyishBlue' : 'bg-darkBlue'
