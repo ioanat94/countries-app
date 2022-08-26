@@ -6,7 +6,7 @@ import AddFavoriteBtn from '../AddFavoriteBtn/AddFavoriteBtn'
 
 function TableRow({ data }: TableRowProps) {
   return (
-    <tr className='h-32 text-greyishBlue border-b border-greyishBlue'>
+    <tr className='h-32 text-greyishBlueLight border-b border-greyishBlue'>
       <td className='min-w-[150px]'>
         <img src={data.flag} alt={`Flag of ${data.name}`} className='w-20' />
       </td>
