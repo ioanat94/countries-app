@@ -3,13 +3,13 @@ import React from 'react'
 import EmptyHeart from '../../assets/heart-empty.png'
 import FullHeart from '../../assets/heart-full.png'
 
-function Favorites() {
+function FavoritesIcon() {
   return (
     <div className='relative self-start mr-4 top-10 right-5 md:self-auto md:top-0 md:right-0'>
       <img
         src={EmptyHeart}
         alt='Empty heart icon'
-        className='min-w-[32px] max-w-[32px]'
+        className='min-w-[32px] max-w-[32px] cursor-pointer'
         onMouseOver={(e) => (e.currentTarget.src = `${FullHeart}`)}
         onMouseLeave={(e) => (e.currentTarget.src = `${EmptyHeart}`)}
         onFocus={(e) => (e.currentTarget.src = `${FullHeart}`)}
@@ -21,4 +21,4 @@ function Favorites() {
   )
 }
 
-export default Favorites
+export default FavoritesIcon

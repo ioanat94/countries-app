@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-import Favorites from '../Favorites/Favorites'
+import FavoritesIcon from '../FavoritesIcon/FavoritesIcon'
 import Search from '../Search/Search'
 
 function Navbar() {
@@ -18,7 +18,7 @@ function Navbar() {
         </Link>
         <Search />
       </div>
-      <Favorites />
+      <FavoritesIcon />
     </div>
   )
 }
