@@ -1,19 +1,30 @@
 import React from 'react'
-import { useDispatch } from 'react-redux'
-import { toggle } from '../../redux/slices/sliderSlice'
+import { useDispatch, useSelector } from 'react-redux'
+
+import { RootState } from '../../redux/store'
+import { toggleSlider } from '../../redux/slices/sliderSlice'
 
 function FavoritesHeader() {
+  const theme = useSelector((state: RootState) => state.theme.theme)
   const dispatch = useDispatch()
 
   return (
-    <div className='flex items-center justify-between text-greyishBlue border-b border-b-greyishBlue h-[80px]'>
+    <div
+      className={`${
+        theme === 'dark'
+          ? 'text-greyishBlue border-b-greyishBlue'
+          : 'text-darkBlue border-b-darkBlue'
+      } flex items-center justify-between border-b h-[80px]`}
+    >
       FAVORITES
       <button
-        onClick={() => dispatch(toggle())}
-        onKeyDown={() => dispatch(toggle())}
+        onClick={() => dispatch(toggleSlider())}
+        onKeyDown={() => dispatch(toggleSlider())}
       >
         <img
-          src={require('../../assets/arrow-white.png')}
+          src={require(`../../assets/arrow-${
+            theme === 'dark' ? 'white' : 'black'
+          }.png`)}
           alt='Back arrow'
           className='w-8 cursor-pointer'
         />

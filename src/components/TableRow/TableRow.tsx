@@ -1,12 +1,22 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { useSelector } from 'react-redux'
 
+import { RootState } from '../../redux/store'
 import { TableRowProps } from '../../types'
 import AddFavoriteBtn from '../AddFavoriteBtn/AddFavoriteBtn'
 
 function TableRow({ data }: TableRowProps) {
+  const theme = useSelector((state: RootState) => state.theme.theme)
+
   return (
-    <tr className='h-32 text-greyishBlueLight border-b border-greyishBlue'>
+    <tr
+      className={`${
+        theme === 'dark'
+          ? 'text-greyishBlueLight border-greyishBlue'
+          : 'text-darkerBlue border-darkBlue'
+      } h-32 border-b`}
+    >
       <td className='min-w-[150px]'>
         <img src={data.flag} alt={`Flag of ${data.name}`} className='w-20' />
       </td>

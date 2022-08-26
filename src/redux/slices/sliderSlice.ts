@@ -12,13 +12,12 @@ export const sliderSlice = createSlice({
   name: 'slider',
   initialState,
   reducers: {
-    toggle: (state) => {
+    toggleSlider: (state) => {
       state.isOpen = !state.isOpen
-      console.log(state.isOpen)
     },
   },
 })
 
-export const { toggle } = sliderSlice.actions
+export const { toggleSlider } = sliderSlice.actions
 
 export default sliderSlice.reducer

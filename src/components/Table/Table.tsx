@@ -10,7 +10,7 @@ function Table() {
     <div className='px-10 py-10 overflow-auto xl:px-20'>
       <table className='border-collapse w-full'>
         <TableHead />
-        <tbody className='text-greyishBlueLight'>
+        <tbody>
           {dummyData.map((data) => (
             <TableRow key={data.id} data={data} />
           ))}
