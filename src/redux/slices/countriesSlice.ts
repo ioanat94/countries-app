@@ -17,12 +17,24 @@ export type Country = {
 
 export interface countriesState {
   items: Country[]
+  singleItem: Country
   filteredItems: Country[]
   isLoading: boolean
 }
 
 const initialState: countriesState = {
   items: [],
+  singleItem: {
+    flags: {
+      png: '',
+    },
+    name: {
+      common: '',
+    },
+    languages: {},
+    population: 0,
+    region: '',
+  },
   filteredItems: [],
   isLoading: false,
 }
@@ -49,7 +61,7 @@ export const fetchCountryThunk = createAsyncThunk(
     )
 
     return {
-      data: res.data,
+      data: res.data[0],
       status: res.status,
     }
   }
@@ -81,11 +93,21 @@ export const countriesSlice = createSlice({
       state.isLoading = false
     })
     builder.addCase(fetchCountryThunk.pending, (state) => {
-      state.items = []
+      state.singleItem = {
+        flags: {
+          png: '',
+        },
+        name: {
+          common: '',
+        },
+        languages: {},
+        population: 0,
+        region: '',
+      }
       state.isLoading = true
     })
     builder.addCase(fetchCountryThunk.fulfilled, (state, action) => {
-      state.items = action.payload.data
+      state.singleItem = action.payload.data
       state.isLoading = false
     })
   },
