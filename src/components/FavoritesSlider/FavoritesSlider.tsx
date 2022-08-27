@@ -2,13 +2,16 @@ import React from 'react'
 import { useSelector } from 'react-redux'
 
 import { RootState } from '../../redux/store'
+import { Favorite } from '../../redux/slices/favoritesSlice'
 import FavoritesHeader from '../FavoritesHeader/FavoritesHeader'
 import FavoritesRow from '../FavoritesRow/FavoritesRow'
 
 function FavoritesSlider() {
-  const isOpen = useSelector((state: RootState) => state.slider.isOpen)
-  const theme = useSelector((state: RootState) => state.theme.theme)
-  const favorites = useSelector((state: RootState) => state.favorites.items)
+  const isOpen: boolean = useSelector((state: RootState) => state.slider.isOpen)
+  const theme: string = useSelector((state: RootState) => state.theme.theme)
+  const favorites: Favorite[] = useSelector(
+    (state: RootState) => state.favorites.items
+  )
 
   return (
     <div

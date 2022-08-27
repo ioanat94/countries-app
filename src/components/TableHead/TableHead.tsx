@@ -1,12 +1,12 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
+import { AppDispatch, RootState } from '../../redux/store'
 import { sort } from '../../redux/slices/countriesSlice'
-import { RootState } from '../../redux/store'
 
 function TableHead() {
-  const theme = useSelector((state: RootState) => state.theme.theme)
-  const dispatch = useDispatch()
+  const theme: string = useSelector((state: RootState) => state.theme.theme)
+  const dispatch = useDispatch<AppDispatch>()
 
   return (
     <thead

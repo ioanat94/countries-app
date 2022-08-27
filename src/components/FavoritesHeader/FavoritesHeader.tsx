@@ -1,12 +1,12 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
-import { RootState } from '../../redux/store'
+import { AppDispatch, RootState } from '../../redux/store'
 import { toggleSlider } from '../../redux/slices/sliderSlice'
 
 function FavoritesHeader() {
-  const theme = useSelector((state: RootState) => state.theme.theme)
-  const dispatch = useDispatch()
+  const theme: string = useSelector((state: RootState) => state.theme.theme)
+  const dispatch = useDispatch<AppDispatch>()
 
   return (
     <div

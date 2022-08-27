@@ -1,4 +1,4 @@
-import { createSlice } from '@reduxjs/toolkit'
+import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
 function setFavorites() {
   if (!localStorage.getItem('favorites')) {
@@ -36,12 +36,12 @@ export const favoritesSlice = createSlice({
   name: 'favorites',
   initialState,
   reducers: {
-    add: (state, action) => {
+    add: (state: FavoritesState, action: PayloadAction<Favorite>) => {
       state.items.push(action.payload)
       state.count += 1
       localStorage.setItem('favorites', JSON.stringify(state.items))
     },
-    remove: (state, action) => {
+    remove: (state: FavoritesState, action: PayloadAction<string>) => {
       state.items = state.items.filter(
         (item) => item.name.common !== action.payload
       )

@@ -1,4 +1,4 @@
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
+import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit'
 import axios from 'axios'
 
 export type Country = {
@@ -15,14 +15,14 @@ export type Country = {
   region: string
 }
 
-export interface countriesState {
+export interface CountriesState {
   items: Country[]
   singleItem: Country
   filteredItems: Country[]
   isLoading: boolean
 }
 
-const initialState: countriesState = {
+const initialState: CountriesState = {
   items: [],
   singleItem: {
     flags: {
@@ -71,7 +71,7 @@ export const countriesSlice = createSlice({
   name: 'countries',
   initialState,
   reducers: {
-    search: (state, action) => {
+    search: (state: CountriesState, action: PayloadAction<string>) => {
       const filteredItems = state.items.filter((item) =>
         item.name.common.toLowerCase().includes(action.payload.toLowerCase())
       )
@@ -82,7 +82,7 @@ export const countriesSlice = createSlice({
           action.payload.length > 0 ? filteredItems : [...state.items],
       }
     },
-    sort: (state, action) => {
+    sort: (state: CountriesState, action: PayloadAction<string>) => {
       if (action.payload === 'aToZ') {
         state.items.sort((a, b) =>
           a.name.common.toLowerCase().localeCompare(b.name.common)
@@ -107,15 +107,18 @@ export const countriesSlice = createSlice({
     },
   },
   extraReducers: (builder) => {
-    builder.addCase(fetchCountriesThunk.pending, (state) => {
+    builder.addCase(fetchCountriesThunk.pending, (state: CountriesState) => {
       state.items = []
       state.isLoading = true
     })
-    builder.addCase(fetchCountriesThunk.fulfilled, (state, action) => {
-      state.items = action.payload.data
-      state.isLoading = false
-    })
-    builder.addCase(fetchCountryThunk.pending, (state) => {
+    builder.addCase(
+      fetchCountriesThunk.fulfilled,
+      (state: CountriesState, action) => {
+        state.items = action.payload.data
+        state.isLoading = false
+      }
+    )
+    builder.addCase(fetchCountryThunk.pending, (state: CountriesState) => {
       state.singleItem = {
         flags: {
           png: '',
@@ -129,10 +132,13 @@ export const countriesSlice = createSlice({
       }
       state.isLoading = true
     })
-    builder.addCase(fetchCountryThunk.fulfilled, (state, action) => {
-      state.singleItem = action.payload.data
-      state.isLoading = false
-    })
+    builder.addCase(
+      fetchCountryThunk.fulfilled,
+      (state: CountriesState, action) => {
+        state.singleItem = action.payload.data
+        state.isLoading = false
+      }
+    )
   },
 })
 

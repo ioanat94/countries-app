@@ -5,7 +5,7 @@ import { RootState } from '../../redux/store'
 import CountryInfo from '../CountryInfo/CountryInfo'
 
 function CountryCard() {
-  const theme = useSelector((state: RootState) => state.theme.theme)
+  const theme: string = useSelector((state: RootState) => state.theme.theme)
 
   return (
     // Wrapping divs to center card on page

@@ -1,14 +1,14 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
-import { RootState } from '../../redux/store'
+import { AppDispatch, RootState } from '../../redux/store'
 import { toggleSlider } from '../../redux/slices/sliderSlice'
 import EmptyHeart from '../../assets/heart-empty.png'
 import FullHeart from '../../assets/heart-full.png'
 
 function FavoritesIcon() {
-  const count = useSelector((state: RootState) => state.favorites.count)
-  const dispatch = useDispatch()
+  const count: number = useSelector((state: RootState) => state.favorites.count)
+  const dispatch = useDispatch<AppDispatch>()
 
   return (
     <div className='relative top-1'>

@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
-import { RootState } from '../../redux/store'
+import { AppDispatch, RootState } from '../../redux/store'
 import { search } from '../../redux/slices/countriesSlice'
 
 function Search() {
-  const theme = useSelector((state: RootState) => state.theme.theme)
-  const dispatch = useDispatch()
-  const [searchTerm, setSearchTerm] = useState('')
+  const theme: string = useSelector((state: RootState) => state.theme.theme)
+  const dispatch = useDispatch<AppDispatch>()
+  const [searchTerm, setSearchTerm] = useState<string>('')
 
   const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchTerm(e.target.value)
@@ -28,7 +28,6 @@ function Search() {
         type='search'
         placeholder='Search...'
         onChange={handleSearch}
-        value={searchTerm}
         className={`${
           theme === 'dark' ? 'bg-darkBlue text-greyishBlueLight' : 'greyishBlue'
         } h-10 w-80 indent-12 rounded`}

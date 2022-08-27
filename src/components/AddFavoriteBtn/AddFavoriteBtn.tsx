@@ -1,13 +1,15 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
-import { RootState } from '../../redux/store'
+import { AppDispatch, RootState } from '../../redux/store'
 import { add, Favorite } from '../../redux/slices/favoritesSlice'
 
 function AddFavoriteBtn(favorite: Favorite) {
-  const theme = useSelector((state: RootState) => state.theme.theme)
-  const favorites = useSelector((state: RootState) => state.favorites.items)
-  const dispatch = useDispatch()
+  const theme: string = useSelector((state: RootState) => state.theme.theme)
+  const favorites: Favorite[] = useSelector(
+    (state: RootState) => state.favorites.items
+  )
+  const dispatch = useDispatch<AppDispatch>()
 
   return (
     <button

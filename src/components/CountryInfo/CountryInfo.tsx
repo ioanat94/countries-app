@@ -2,8 +2,8 @@ import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom'
 
+import { AppDispatch, RootState } from '../../redux/store'
 import { fetchCountryThunk } from '../../redux/slices/countriesSlice'
-import { RootState } from '../../redux/store'
 import AddFavoriteBtn from '../AddFavoriteBtn/AddFavoriteBtn'
 
 type ParamTypes = {
@@ -11,10 +11,10 @@ type ParamTypes = {
 }
 
 function CountryInfo() {
-  const theme = useSelector((state: RootState) => state.theme.theme)
+  const theme: string = useSelector((state: RootState) => state.theme.theme)
   const { countries } = useSelector((state: RootState) => state)
-  const { param } = useParams<ParamTypes>()
-  const dispatch = useDispatch()
+  const { param }: ParamTypes = useParams<ParamTypes>()
+  const dispatch = useDispatch<AppDispatch>()
 
   useEffect(() => {
     dispatch(fetchCountryThunk(param))

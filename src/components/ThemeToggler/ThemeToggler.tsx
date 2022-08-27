@@ -1,14 +1,14 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
+import { AppDispatch, RootState } from '../../redux/store'
 import { toggleTheme } from '../../redux/slices/themeSlice'
-import { RootState } from '../../redux/store'
 import LightTheme from '../../assets/light.png'
 import DarkTheme from '../../assets/dark.png'
 
 function ThemeToggler() {
-  const theme = useSelector((state: RootState) => state.theme.theme)
-  const dispatch = useDispatch()
+  const theme: string = useSelector((state: RootState) => state.theme.theme)
+  const dispatch = useDispatch<AppDispatch>()
 
   return (
     <button
