@@ -16,7 +16,7 @@ function FavoritesSlider() {
         theme === 'dark' ? 'bg-darkerBlue' : 'bg-greyishBlueLight'
       } text-2xl px-6 h-full min-w-full fixed top-0 right-0 transition-all drop-shadow-2xl ${
         isOpen ? 'visible' : 'invisible'
-      } md:min-w-[400px]`}
+      } md:min-w-[400px] z-[99]`}
     >
       <FavoritesHeader />
       {favorites.length > 0 &&

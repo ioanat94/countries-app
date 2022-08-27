@@ -42,7 +42,9 @@ export const favoritesSlice = createSlice({
       localStorage.setItem('favorites', JSON.stringify(state.items))
     },
     remove: (state, action) => {
-      state.items.filter((item) => item.name.common !== action.payload)
+      state.items = state.items.filter(
+        (item) => item.name.common !== action.payload
+      )
       state.count -= 1
       localStorage.setItem('favorites', JSON.stringify(state.items))
     },

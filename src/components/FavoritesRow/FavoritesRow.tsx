@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux'
 
 import { RootState } from '../../redux/store'
 import { Favorite } from '../../redux/slices/favoritesSlice'
+import RemoveFavoriteBtn from '../RemoveFavoriteBtn/RemoveFavoriteBtn'
 
 function FavoritesRow(favorite: Favorite) {
   const theme = useSelector((state: RootState) => state.theme.theme)
@@ -27,11 +28,7 @@ function FavoritesRow(favorite: Favorite) {
           {favorite.name.common}
         </Link>
       </div>
-      <img
-        src={require('../../assets/remove.png')}
-        alt=''
-        className='w-6 cursor-pointer'
-      />
+      <RemoveFavoriteBtn {...favorite} />
     </div>
   )
 }
