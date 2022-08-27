@@ -1,11 +1,13 @@
 import React from 'react'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 
 import { toggleSlider } from '../../redux/slices/sliderSlice'
 import EmptyHeart from '../../assets/heart-empty.png'
 import FullHeart from '../../assets/heart-full.png'
+import { RootState } from '../../redux/store'
 
 function FavoritesIcon() {
+  const count = useSelector((state: RootState) => state.favorites.count)
   const dispatch = useDispatch()
 
   return (
@@ -24,7 +26,7 @@ function FavoritesIcon() {
         />
       </button>
       <span className='border-transparent text-greyishBlueLight absolute -top-3 -right-4 flex justify-center w-7 h-7 text-base font-bold bg-red-600 border rounded-full'>
-        2
+        {count}
       </span>
     </div>
   )

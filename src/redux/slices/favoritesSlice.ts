@@ -2,10 +2,15 @@ import { createSlice } from '@reduxjs/toolkit'
 
 function setFavorites() {
   if (!localStorage.getItem('favorites')) {
-    return []
+    const items: [] = []
+    const count = 0
+    return { items, count }
   }
 
-  return JSON.parse(localStorage.getItem('favorites') || '{}')
+  const items: [] = JSON.parse(localStorage.getItem('favorites') || '{}')
+  const count: number = items.length || 0
+
+  return { items, count }
 }
 
 export type Favorite = {
@@ -19,10 +24,12 @@ export type Favorite = {
 
 export interface FavoritesState {
   items: Favorite[]
+  count: number
 }
 
 const initialState: FavoritesState = {
-  items: setFavorites() || [],
+  items: setFavorites().items || [],
+  count: setFavorites().count || 0,
 }
 
 export const favoritesSlice = createSlice({
@@ -31,10 +38,13 @@ export const favoritesSlice = createSlice({
   reducers: {
     add: (state, action) => {
       state.items.push(action.payload)
+      state.count += 1
       localStorage.setItem('favorites', JSON.stringify(state.items))
     },
     remove: (state, action) => {
       state.items.filter((item) => item.name.common !== action.payload)
+      state.count -= 1
+      localStorage.setItem('favorites', JSON.stringify(state.items))
     },
   },
 })
