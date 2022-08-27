@@ -17,11 +17,13 @@ export type Country = {
 
 export interface countriesState {
   items: Country[]
+  filteredItems: Country[]
   isLoading: boolean
 }
 
 const initialState: countriesState = {
   items: [],
+  filteredItems: [],
   isLoading: false,
 }
 
@@ -56,7 +58,19 @@ export const fetchCountryThunk = createAsyncThunk(
 export const countriesSlice = createSlice({
   name: 'countries',
   initialState,
-  reducers: {},
+  reducers: {
+    search: (state, action) => {
+      const filteredItems = state.items.filter((item) =>
+        item.name.common.toLowerCase().includes(action.payload.toLowerCase())
+      )
+      console.log(filteredItems)
+      return {
+        ...state,
+        filteredItems:
+          action.payload.length > 0 ? filteredItems : [...state.items],
+      }
+    },
+  },
   extraReducers: (builder) => {
     builder.addCase(fetchCountriesThunk.pending, (state) => {
       state.items = []
@@ -76,5 +90,7 @@ export const countriesSlice = createSlice({
     })
   },
 })
+
+export const { search } = countriesSlice.actions
 
 export default countriesSlice.reducer

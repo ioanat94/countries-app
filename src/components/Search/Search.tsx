@@ -1,10 +1,22 @@
-import React from 'react'
-import { useSelector } from 'react-redux'
+import React, { useEffect, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 
+import { search } from '../../redux/slices/countriesSlice'
 import { RootState } from '../../redux/store'
 
 function Search() {
   const theme = useSelector((state: RootState) => state.theme.theme)
+
+  const dispatch = useDispatch()
+  const [searchTerm, setSearchTerm] = useState('')
+
+  const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchTerm(e.target.value)
+  }
+
+  useEffect(() => {
+    dispatch(search(searchTerm))
+  }, [dispatch, searchTerm])
 
   return (
     <div className='relative flex items-center'>
@@ -16,8 +28,10 @@ function Search() {
       <input
         type='search'
         placeholder='Search...'
+        onChange={handleSearch}
+        value={searchTerm}
         className={`${
-          theme === 'dark' ? 'bg-darkBlue' : 'greyishBlue'
+          theme === 'dark' ? 'bg-darkBlue text-greyishBlueLight' : 'greyishBlue'
         } h-10 w-80 indent-12 rounded`}
       />
     </div>

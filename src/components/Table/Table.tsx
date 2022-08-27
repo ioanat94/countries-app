@@ -20,9 +20,16 @@ function Table() {
       <table className='border-collapse w-full'>
         <TableHead />
         <tbody>
-          {countries.items.map((country) => (
-            <TableRow key={country.name.common} {...country} />
-          ))}
+          {
+            countries.filteredItems.length > 0
+              ? /* eslint-disable */
+                countries.filteredItems.map((country) => (
+                  <TableRow key={country.name.common} {...country} />
+                ))
+              : countries.items.map((country) => (
+                  <TableRow key={country.name.common} {...country} />
+                )) /* eslint-enable */
+          }
         </tbody>
       </table>
     </div>
