@@ -14,7 +14,7 @@ function Navbar() {
     <div
       className={`${
         theme === 'dark' ? 'bg-darkerBlue' : 'bg-greyishBlueLight'
-      } h-40 flex items-center justify-between md:h-20 px-6`}
+      } h-40 flex items-center justify-between md:h-20 px-6 sticky top-0 z-50`}
     >
       <div className='flex flex-col gap-4 md:flex-row md:gap-8 md:items-center'>
         <Link to='/' className='flex items-center gap-4 md:gap-8'>
