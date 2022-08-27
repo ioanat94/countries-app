@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { RootState } from '../../redux/store'
 
+import { RootState } from '../../redux/store'
 import { fetchCountriesThunk } from '../../redux/slices/countriesSlice'
 import TableHead from '../TableHead/TableHead'
 import TableRow from '../TableRow/TableRow'

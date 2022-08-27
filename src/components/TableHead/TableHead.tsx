@@ -1,7 +1,7 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { sort } from '../../redux/slices/countriesSlice'
 
+import { sort } from '../../redux/slices/countriesSlice'
 import { RootState } from '../../redux/store'
 
 function TableHead() {
