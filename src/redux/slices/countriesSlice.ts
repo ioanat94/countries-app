@@ -63,7 +63,7 @@ export const countriesSlice = createSlice({
       const filteredItems = state.items.filter((item) =>
         item.name.common.toLowerCase().includes(action.payload.toLowerCase())
       )
-      console.log(filteredItems)
+
       return {
         ...state,
         filteredItems:

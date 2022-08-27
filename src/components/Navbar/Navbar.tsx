@@ -3,10 +3,10 @@ import { Link } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 
 import { RootState } from '../../redux/store'
+import { toggleSlider } from '../../redux/slices/sliderSlice'
 import FavoritesIcon from '../FavoritesIcon/FavoritesIcon'
 import Search from '../Search/Search'
 import ThemeToggler from '../ThemeToggler/ThemeToggler'
-import { toggleSlider } from '../../redux/slices/sliderSlice'
 
 function Navbar() {
   const theme = useSelector((state: RootState) => state.theme.theme)

@@ -1,10 +1,10 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
+import { RootState } from '../../redux/store'
 import { toggleSlider } from '../../redux/slices/sliderSlice'
 import EmptyHeart from '../../assets/heart-empty.png'
 import FullHeart from '../../assets/heart-full.png'
-import { RootState } from '../../redux/store'
 
 function FavoritesIcon() {
   const count = useSelector((state: RootState) => state.favorites.count)

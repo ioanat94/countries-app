@@ -4,8 +4,8 @@ import { useDispatch, useSelector } from 'react-redux'
 
 import { RootState } from '../../redux/store'
 import { Favorite } from '../../redux/slices/favoritesSlice'
-import RemoveFavoriteBtn from '../RemoveFavoriteBtn/RemoveFavoriteBtn'
 import { toggleSlider } from '../../redux/slices/sliderSlice'
+import RemoveFavoriteBtn from '../RemoveFavoriteBtn/RemoveFavoriteBtn'
 
 function FavoritesRow(favorite: Favorite) {
   const theme = useSelector((state: RootState) => state.theme.theme)

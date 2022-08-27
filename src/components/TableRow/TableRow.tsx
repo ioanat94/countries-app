@@ -3,9 +3,9 @@ import { Link } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 
 import { RootState } from '../../redux/store'
-import AddFavoriteBtn from '../AddFavoriteBtn/AddFavoriteBtn'
 import { Country } from '../../redux/slices/countriesSlice'
 import { toggleSlider } from '../../redux/slices/sliderSlice'
+import AddFavoriteBtn from '../AddFavoriteBtn/AddFavoriteBtn'
 
 function TableRow({ flags, name, languages, population, region }: Country) {
   const theme = useSelector((state: RootState) => state.theme.theme)
