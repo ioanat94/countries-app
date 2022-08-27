@@ -1,13 +1,16 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 
 import { RootState } from '../../redux/store'
 import AddFavoriteBtn from '../AddFavoriteBtn/AddFavoriteBtn'
 import { Country } from '../../redux/slices/countriesSlice'
+import { toggleSlider } from '../../redux/slices/sliderSlice'
 
 function TableRow({ flags, name, languages, population, region }: Country) {
   const theme = useSelector((state: RootState) => state.theme.theme)
+  const isOpen = useSelector((state: RootState) => state.slider.isOpen)
+  const dispatch = useDispatch()
 
   return (
     <tr
@@ -21,7 +24,12 @@ function TableRow({ flags, name, languages, population, region }: Country) {
         <img src={flags.png} alt={`Flag of ${name}`} className='w-20' />
       </td>
       <td className='min-w-[150px]'>
-        <Link to={`/countries/${name.common}`} className='hover:underline'>
+        <Link
+          to={`/countries/${name.common}`}
+          className='hover:underline'
+          onClick={() => isOpen && dispatch(toggleSlider())}
+          onKeyDown={() => isOpen && dispatch(toggleSlider())}
+        >
           {name.common}
         </Link>
       </td>

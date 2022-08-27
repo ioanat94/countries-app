@@ -1,13 +1,16 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 
 import { RootState } from '../../redux/store'
 import { Favorite } from '../../redux/slices/favoritesSlice'
 import RemoveFavoriteBtn from '../RemoveFavoriteBtn/RemoveFavoriteBtn'
+import { toggleSlider } from '../../redux/slices/sliderSlice'
 
 function FavoritesRow(favorite: Favorite) {
   const theme = useSelector((state: RootState) => state.theme.theme)
+  const isOpen = useSelector((state: RootState) => state.slider.isOpen)
+  const dispatch = useDispatch()
 
   return (
     <div
@@ -24,6 +27,8 @@ function FavoritesRow(favorite: Favorite) {
         <Link
           to={`/countries/${favorite.name.common}`}
           className='hover:underline text-xl'
+          onClick={() => isOpen && dispatch(toggleSlider())}
+          onKeyDown={() => isOpen && dispatch(toggleSlider())}
         >
           {favorite.name.common}
         </Link>
