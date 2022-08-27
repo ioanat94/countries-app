@@ -2,8 +2,11 @@ import React from 'react'
 import { useSelector } from 'react-redux'
 
 import { RootState } from '../../redux/store'
-import AddFavoriteBtn from '../AddFavoriteBtn/AddFavoriteBtn'
 import CountryInfo from '../CountryInfo/CountryInfo'
+
+type ParamTypes = {
+  name: string
+}
 
 function CountryCard() {
   const theme = useSelector((state: RootState) => state.theme.theme)
@@ -17,7 +20,6 @@ function CountryCard() {
         } flex flex-col items-center min-w-[90vw] mx-4 px-20 py-5 rounded-xl drop-shadow-2xl md:min-w-[50vw] md:pt-20 md:pb-10`}
       >
         <CountryInfo />
-        <AddFavoriteBtn />
       </div>
     </div>
   )

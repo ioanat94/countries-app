@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux'
 import { RootState } from '../redux/store'
 import CountryCard from '../components/CountryCard/CountryCard'
 import Navbar from '../components/Navbar/Navbar'
+import FavoritesSlider from '../components/FavoritesSlider/FavoritesSlider'
 
 function Country() {
   const theme = useSelector((state: RootState) => state.theme.theme)
@@ -16,6 +17,7 @@ function Country() {
     >
       <Navbar />
       <CountryCard />
+      <FavoritesSlider />
     </div>
   )
 }

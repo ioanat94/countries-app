@@ -8,6 +8,7 @@ import FavoritesRow from '../FavoritesRow/FavoritesRow'
 function FavoritesSlider() {
   const isOpen = useSelector((state: RootState) => state.slider.isOpen)
   const theme = useSelector((state: RootState) => state.theme.theme)
+  const favorites = useSelector((state: RootState) => state.favorites.items)
 
   return (
     <div
@@ -18,9 +19,10 @@ function FavoritesSlider() {
       } md:min-w-[400px]`}
     >
       <FavoritesHeader />
-      <FavoritesRow />
-      <FavoritesRow />
-      <FavoritesRow />
+      {favorites.length > 0 &&
+        favorites.map((favorite) => (
+          <FavoritesRow key={favorite.name.common} {...favorite} />
+        ))}
     </div>
   )
 }

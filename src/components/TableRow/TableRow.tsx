@@ -35,7 +35,7 @@ function TableRow({ flags, name, languages, population, region }: Country) {
       <td className='min-w-[150px]'>{population.toLocaleString()}</td>
       <td className='min-w-[150px]'>{region}</td>
       <td className='w-20 min-w-[150px]'>
-        <AddFavoriteBtn />
+        <AddFavoriteBtn flags={flags} name={name} />
       </td>
     </tr>
   )
