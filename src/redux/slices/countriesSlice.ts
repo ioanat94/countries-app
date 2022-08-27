@@ -82,6 +82,29 @@ export const countriesSlice = createSlice({
           action.payload.length > 0 ? filteredItems : [...state.items],
       }
     },
+    sort: (state, action) => {
+      if (action.payload === 'aToZ') {
+        state.items.sort((a, b) =>
+          a.name.common.toLowerCase().localeCompare(b.name.common)
+        )
+        state.filteredItems.sort((a, b) =>
+          a.name.common.toLowerCase().localeCompare(b.name.common)
+        )
+      } else if (action.payload === 'zToA') {
+        state.items.sort((a, b) =>
+          b.name.common.toLowerCase().localeCompare(a.name.common)
+        )
+        state.filteredItems.sort((a, b) =>
+          b.name.common.toLowerCase().localeCompare(a.name.common)
+        )
+      } else if (action.payload === 'lowToHigh') {
+        state.items.sort((a, b) => a.population - b.population)
+        state.filteredItems.sort((a, b) => a.population - b.population)
+      } else if (action.payload === 'highToLow') {
+        state.items.sort((a, b) => b.population - a.population)
+        state.filteredItems.sort((a, b) => b.population - a.population)
+      }
+    },
   },
   extraReducers: (builder) => {
     builder.addCase(fetchCountriesThunk.pending, (state) => {
@@ -113,6 +136,6 @@ export const countriesSlice = createSlice({
   },
 })
 
-export const { search } = countriesSlice.actions
+export const { search, sort } = countriesSlice.actions
 
 export default countriesSlice.reducer
