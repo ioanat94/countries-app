@@ -9495,6 +9495,14 @@ react-router-dom@^5.1.2:
     tiny-invariant "^1.0.2"
     tiny-warning "^1.0.0"
 
+react-router-refreshable@^0.4.0:
+  version "0.4.0"
+  resolved "https://registry.yarnpkg.com/react-router-refreshable/-/react-router-refreshable-0.4.0.tgz#174e469cfce3aa9888e415771851e9152912513e"
+  integrity sha512-lkoxuUZGObmUSzfdPDI1kBMyijFHHbNx/0N2s6B1Ne301QdLk5qcSj7+0emVWUi9cGJH75g3DZ0alWykgWEFjg==
+  dependencies:
+    use-force-update "^1.0.7"
+    use-previous "^1.1.0"
+
 react-router@5.2.0:
   version "5.2.0"
   resolved "https://registry.yarnpkg.com/react-router/-/react-router-5.2.0.tgz#424e75641ca8747fbf76e5ecca69781aa37ea293"
@@ -11399,6 +11407,23 @@ url@^0.11.0:
   dependencies:
     punycode "1.3.2"
     querystring "0.2.0"
+
+use-force-update@^1.0.7:
+  version "1.0.10"
+  resolved "https://registry.yarnpkg.com/use-force-update/-/use-force-update-1.0.10.tgz#c59d93e1f600df93a3ffee4fe001373ff3eeef67"
+  integrity sha512-lDCSS6OQKqzAWhbavL1UWw1g5xHWUDaUDpY26zKsfCszi2RNjdzFxUVtA6M/43dgA/e6Si1AX2Qhb+hzdRuCeg==
+
+use-isomorphic-layout-effect@^1.1.0:
+  version "1.1.2"
+  resolved "https://registry.yarnpkg.com/use-isomorphic-layout-effect/-/use-isomorphic-layout-effect-1.1.2.tgz#497cefb13d863d687b08477d9e5a164ad8c1a6fb"
+  integrity sha512-49L8yCO3iGT/ZF9QttjwLF/ZD9Iwto5LnH5LmEdk/6cFmXddqi2ulF0edxTwjj+7mqvpVVGQWvbXZdn32wRSHA==
+
+use-previous@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/use-previous/-/use-previous-1.1.0.tgz#9d08a4cff2bc96679139053cc4ee3d97169ec661"
+  integrity sha512-t6ltKuYIpvcqD+VBnlUOaT+N94bN7HwUdB1u7rSpCIh9XvMJQIjsw/G8DoJlSDh029khFQ2L8q88oUWfKoWy5w==
+  dependencies:
+    use-isomorphic-layout-effect "^1.1.0"
 
 use@^3.1.0:
   version "3.1.1"
