@@ -6,7 +6,6 @@ import { RootState } from '../../redux/store'
 
 function TableHead() {
   const theme = useSelector((state: RootState) => state.theme.theme)
-
   const dispatch = useDispatch()
 
   return (

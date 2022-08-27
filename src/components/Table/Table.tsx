@@ -7,8 +7,8 @@ import TableHead from '../TableHead/TableHead'
 import TableRow from '../TableRow/TableRow'
 
 function Table() {
-  const dispatch = useDispatch()
   const { countries } = useSelector((state: RootState) => state)
+  const dispatch = useDispatch()
 
   useEffect(() => {
     dispatch(fetchCountriesThunk())

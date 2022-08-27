@@ -6,7 +6,6 @@ import { search } from '../../redux/slices/countriesSlice'
 
 function Search() {
   const theme = useSelector((state: RootState) => state.theme.theme)
-
   const dispatch = useDispatch()
   const [searchTerm, setSearchTerm] = useState('')
 

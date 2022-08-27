@@ -12,9 +12,9 @@ type ParamTypes = {
 
 function CountryInfo() {
   const theme = useSelector((state: RootState) => state.theme.theme)
-  const dispatch = useDispatch()
   const { countries } = useSelector((state: RootState) => state)
   const { param } = useParams<ParamTypes>()
+  const dispatch = useDispatch()
 
   useEffect(() => {
     dispatch(fetchCountryThunk(param))

@@ -4,10 +4,6 @@ import { useSelector } from 'react-redux'
 import { RootState } from '../../redux/store'
 import CountryInfo from '../CountryInfo/CountryInfo'
 
-type ParamTypes = {
-  name: string
-}
-
 function CountryCard() {
   const theme = useSelector((state: RootState) => state.theme.theme)
 
