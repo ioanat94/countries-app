@@ -57,7 +57,7 @@ export const fetchCountryThunk = createAsyncThunk(
   'country/fetch',
   async (name: string) => {
     const res = await axios.get(
-      `https://restcountries.com/v3.1/name/${name}?fields=flags,name,languages,population,region`
+      `https://restcountries.com/v3.1/name/${name}?fullText=true&fields=flags,name,languages,population,region`
     )
 
     return {
