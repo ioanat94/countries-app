@@ -11,14 +11,18 @@ function AddFavoriteBtn(favorite: Favorite) {
   )
   const dispatch = useDispatch<AppDispatch>()
 
+  const isInCart = favorites.some(
+    (item) => item.name.common === favorite.name.common
+  )
+
+  const handleAddToFav = () => {
+    dispatch(add(favorite))
+  }
+
   return (
     <button
-      onClick={() => dispatch(add(favorite))}
-      disabled={
-        favorites.some((item) => item.name.common === favorite.name.common)
-          ? true
-          : false
-      }
+      onClick={handleAddToFav}
+      disabled={isInCart}
       className={`btn ${theme === 'dark' ? 'btn-dark' : 'btn-light'}`}
     >
       ADD

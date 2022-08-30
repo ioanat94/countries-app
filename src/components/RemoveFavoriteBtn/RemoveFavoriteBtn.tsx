@@ -7,8 +7,12 @@ import { Favorite, remove } from '../../redux/slices/favoritesSlice'
 function RemoveFavoriteBtn(favorite: Favorite) {
   const dispatch = useDispatch<AppDispatch>()
 
+  const handleRemoveFromFav = () => {
+    dispatch(remove(favorite.name.common))
+  }
+
   return (
-    <button onClick={() => dispatch(remove(favorite.name.common))}>
+    <button onClick={handleRemoveFromFav}>
       <img
         src={require('../../assets/remove.png')}
         alt=''

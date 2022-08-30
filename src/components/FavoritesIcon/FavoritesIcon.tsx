@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { FocusEvent } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
 import { AppDispatch, RootState } from '../../redux/store'
@@ -10,18 +10,31 @@ function FavoritesIcon() {
   const count: number = useSelector((state: RootState) => state.favorites.count)
   const dispatch = useDispatch<AppDispatch>()
 
+  const handleToggleSlider = () => {
+    dispatch(toggleSlider())
+  }
+
+  const handleMouseOver = (e: React.MouseEvent<HTMLImageElement>) => {
+    e.currentTarget.src = `${FullHeart}`
+  }
+
+  const handleMouseLeave = (e: React.MouseEvent<HTMLImageElement>) => {
+    e.currentTarget.src = `${EmptyHeart}`
+  }
+
+  const handleFocus = (e: FocusEvent<HTMLImageElement>) => {
+    e.currentTarget.src = `${FullHeart}`
+  }
+
   return (
     <div className='relative top-1'>
-      <button
-        onClick={() => dispatch(toggleSlider())}
-        onKeyDown={() => dispatch(toggleSlider())}
-      >
+      <button onClick={handleToggleSlider} onKeyDown={handleToggleSlider}>
         <img
           src={EmptyHeart}
           alt='Empty heart icon'
-          onMouseOver={(e) => (e.currentTarget.src = `${FullHeart}`)}
-          onMouseLeave={(e) => (e.currentTarget.src = `${EmptyHeart}`)}
-          onFocus={(e) => (e.currentTarget.src = `${FullHeart}`)}
+          onMouseOver={handleMouseOver}
+          onMouseLeave={handleMouseLeave}
+          onFocus={handleFocus}
           className='min-w-[32px] max-w-[32px] cursor-pointer'
         />
       </button>

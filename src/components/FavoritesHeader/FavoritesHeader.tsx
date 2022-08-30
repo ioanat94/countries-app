@@ -8,6 +8,10 @@ function FavoritesHeader() {
   const theme: string = useSelector((state: RootState) => state.theme.theme)
   const dispatch = useDispatch<AppDispatch>()
 
+  const handleToggleSlider = () => {
+    dispatch(toggleSlider())
+  }
+
   return (
     <div
       className={`fav-header ${
@@ -15,10 +19,7 @@ function FavoritesHeader() {
       }`}
     >
       FAVORITES
-      <button
-        onClick={() => dispatch(toggleSlider())}
-        onKeyDown={() => dispatch(toggleSlider())}
-      >
+      <button onClick={handleToggleSlider} onKeyDown={handleToggleSlider}>
         <img
           src={require(`../../assets/arrow-${
             theme === 'dark' ? 'white' : 'black'

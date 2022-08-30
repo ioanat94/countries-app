@@ -10,11 +10,12 @@ function ThemeToggler() {
   const theme: string = useSelector((state: RootState) => state.theme.theme)
   const dispatch = useDispatch<AppDispatch>()
 
+  const handleToggleTheme = () => {
+    dispatch(toggleTheme())
+  }
+
   return (
-    <button
-      onClick={() => dispatch(toggleTheme())}
-      onKeyDown={() => dispatch(toggleTheme())}
-    >
+    <button onClick={handleToggleTheme} onKeyDown={handleToggleTheme}>
       <img
         src={theme === 'dark' ? LightTheme : DarkTheme}
         alt='Theme icon'

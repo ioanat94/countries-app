@@ -12,6 +12,10 @@ function FavoritesRow(favorite: Favorite) {
   const isOpen: boolean = useSelector((state: RootState) => state.slider.isOpen)
   const dispatch = useDispatch<AppDispatch>()
 
+  const handleToggleSlider = () => {
+    isOpen && dispatch(toggleSlider())
+  }
+
   return (
     <div
       className={`fav-row ${
@@ -27,8 +31,8 @@ function FavoritesRow(favorite: Favorite) {
         <Link
           to={`/countries/${favorite.name.common}`}
           className='hover:underline text-xl'
-          onClick={() => isOpen && dispatch(toggleSlider())}
-          onKeyDown={() => isOpen && dispatch(toggleSlider())}
+          onClick={handleToggleSlider}
+          onKeyDown={handleToggleSlider}
         >
           {favorite.name.common}
         </Link>

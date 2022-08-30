@@ -12,6 +12,10 @@ function TableRow({ flags, name, languages, population, region }: Country) {
   const isOpen: boolean = useSelector((state: RootState) => state.slider.isOpen)
   const dispatch = useDispatch<AppDispatch>()
 
+  const handleToggleSlider = () => {
+    isOpen && dispatch(toggleSlider())
+  }
+
   return (
     <tr
       className={`tb-row ${theme === 'dark' ? 'tb-row-dark' : 'tb-row-light'}`}
@@ -23,8 +27,8 @@ function TableRow({ flags, name, languages, population, region }: Country) {
         <Link
           to={`/countries/${name.common}`}
           className='hover:underline'
-          onClick={() => isOpen && dispatch(toggleSlider())}
-          onKeyDown={() => isOpen && dispatch(toggleSlider())}
+          onClick={handleToggleSlider}
+          onKeyDown={handleToggleSlider}
         >
           {name.common}
         </Link>

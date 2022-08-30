@@ -13,14 +13,18 @@ function Navbar() {
   const isOpen: boolean = useSelector((state: RootState) => state.slider.isOpen)
   const dispatch = useDispatch<AppDispatch>()
 
+  const handleToggleSlider = () => {
+    isOpen && dispatch(toggleSlider())
+  }
+
   return (
     <div className={`nav ${theme === 'dark' ? 'nav-dark' : 'nav-light'}`}>
       <div className='flex flex-col gap-4 md:flex-row md:gap-8 md:items-center'>
         <Link
           to='/'
           className='flex items-center gap-4 md:gap-8'
-          onClick={() => isOpen && dispatch(toggleSlider())}
-          onKeyDown={() => isOpen && dispatch(toggleSlider())}
+          onClick={handleToggleSlider}
+          onKeyDown={handleToggleSlider}
         >
           <img
             src={require('../../assets/globe.png')}

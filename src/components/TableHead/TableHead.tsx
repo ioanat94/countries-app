@@ -8,6 +8,22 @@ function TableHead() {
   const theme: string = useSelector((state: RootState) => state.theme.theme)
   const dispatch = useDispatch<AppDispatch>()
 
+  const handleAToZ = () => {
+    dispatch(sort('aToZ'))
+  }
+
+  const handleZToA = () => {
+    dispatch(sort('zToA'))
+  }
+
+  const handleLowToHigh = () => {
+    dispatch(sort('lowToHigh'))
+  }
+
+  const handleHighToLow = () => {
+    dispatch(sort('highToLow'))
+  }
+
   return (
     <thead
       className={`tb-head ${
@@ -18,7 +34,7 @@ function TableHead() {
         <td>Flag</td>
         <td>
           Name
-          <button onClick={() => dispatch(sort('aToZ'))} className='w-6 ml-2'>
+          <button onClick={handleAToZ} className='w-6 ml-2'>
             <img
               src={require(`../../assets/arrow-up-${
                 theme === 'dark' ? 'white' : 'black'
@@ -26,7 +42,7 @@ function TableHead() {
               alt='Sort by Name Descending'
             />
           </button>
-          <button onClick={() => dispatch(sort('zToA'))} className='w-6'>
+          <button onClick={handleZToA} className='w-6'>
             <img
               src={require(`../../assets/arrow-down-${
                 theme === 'dark' ? 'white' : 'black'
@@ -38,10 +54,7 @@ function TableHead() {
         <td>Languages</td>
         <td>
           Population
-          <button
-            onClick={() => dispatch(sort('lowToHigh'))}
-            className='w-6 ml-2'
-          >
+          <button onClick={handleLowToHigh} className='w-6 ml-2'>
             <img
               src={require(`../../assets/arrow-up-${
                 theme === 'dark' ? 'white' : 'black'
@@ -49,7 +62,7 @@ function TableHead() {
               alt='Sort by Name Descending'
             />
           </button>
-          <button onClick={() => dispatch(sort('highToLow'))} className='w-6'>
+          <button onClick={handleHighToLow} className='w-6'>
             <img
               src={require(`../../assets/arrow-down-${
                 theme === 'dark' ? 'white' : 'black'
