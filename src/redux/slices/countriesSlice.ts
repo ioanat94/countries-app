@@ -76,33 +76,33 @@ export const countriesSlice = createSlice({
         item.name.common.toLowerCase().includes(action.payload.toLowerCase())
       )
 
-      return {
-        ...state,
-        filteredItems:
-          action.payload.length > 0 ? filteredItems : [...state.items],
-      }
+      state.filteredItems = filteredItems
     },
     sort: (state: CountriesState, action: PayloadAction<string>) => {
       if (action.payload === 'aToZ') {
-        state.items.sort((a, b) =>
+        state.items = state.items.sort((a, b) =>
           a.name.common.toLowerCase().localeCompare(b.name.common)
         )
-        state.filteredItems.sort((a, b) =>
+        state.filteredItems = state.filteredItems.sort((a, b) =>
           a.name.common.toLowerCase().localeCompare(b.name.common)
         )
       } else if (action.payload === 'zToA') {
-        state.items.sort((a, b) =>
+        state.items = state.items.sort((a, b) =>
           b.name.common.toLowerCase().localeCompare(a.name.common)
         )
-        state.filteredItems.sort((a, b) =>
+        state.filteredItems = state.filteredItems.sort((a, b) =>
           b.name.common.toLowerCase().localeCompare(a.name.common)
         )
       } else if (action.payload === 'lowToHigh') {
-        state.items.sort((a, b) => a.population - b.population)
-        state.filteredItems.sort((a, b) => a.population - b.population)
+        state.items = state.items.sort((a, b) => a.population - b.population)
+        state.filteredItems = state.filteredItems.sort(
+          (a, b) => a.population - b.population
+        )
       } else if (action.payload === 'highToLow') {
-        state.items.sort((a, b) => b.population - a.population)
-        state.filteredItems.sort((a, b) => b.population - a.population)
+        state.items = state.items.sort((a, b) => b.population - a.population)
+        state.filteredItems = state.filteredItems.sort(
+          (a, b) => b.population - a.population
+        )
       }
     },
   },
