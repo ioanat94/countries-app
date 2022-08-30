@@ -5,10 +5,13 @@ import { useParams } from 'react-router-dom'
 import { AppDispatch, RootState } from '../../redux/store'
 import { fetchCountryThunk } from '../../redux/slices/countriesSlice'
 import AddFavoriteBtn from '../AddFavoriteBtn/AddFavoriteBtn'
+import CountryInfoRow from '../CountryInfoRow/CountryInfoRow'
 
 type ParamTypes = {
   param: string
 }
+
+export type ValueType = string | { [key: string]: string }
 
 function CountryInfo() {
   const theme = useSelector((state: RootState) => state.theme.theme)
@@ -22,6 +25,17 @@ function CountryInfo() {
 
   const { flags, name, languages, population, region } = countries.singleItem
 
+  const columns: {
+    [key: string]: string | ValueType
+    label: string
+    info: ValueType
+  }[] = [
+    { label: 'Name:', info: name.common },
+    { label: 'Languages:', info: languages },
+    { label: 'Population:', info: population.toLocaleString() },
+    { label: 'Region:', info: region },
+  ]
+
   return countries ? (
     <div className='flex flex-col items-center'>
       <div className='flex flex-col justify-center gap-10 pb-10 md:flex-row'>
@@ -33,28 +47,9 @@ function CountryInfo() {
             }  w-[300px]`}
           >
             <tbody>
-              <tr className='h-14'>
-                <td className='font-bold'>Name:</td>
-                <td>{name.common}</td>
-              </tr>
-              <tr className='h-14'>
-                <td className='font-bold'>Languages:</td>
-                <td>
-                  <ul>
-                    {Object.values(languages).map((language) => (
-                      <li key={language}>{language}</li>
-                    ))}
-                  </ul>
-                </td>
-              </tr>
-              <tr className='h-14'>
-                <td className='font-bold'>Population:</td>
-                <td>{population.toLocaleString()}</td>
-              </tr>
-              <tr className='h-14'>
-                <td className='font-bold'>Region:</td>
-                <td>{region}</td>
-              </tr>
+              {columns.map((column) => (
+                <CountryInfoRow label={column.label} info={column.info} />
+              ))}
             </tbody>
           </table>
         </div>
