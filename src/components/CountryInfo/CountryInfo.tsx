@@ -48,7 +48,11 @@ function CountryInfo() {
           >
             <tbody>
               {columns.map((column) => (
-                <CountryInfoRow label={column.label} info={column.info} />
+                <CountryInfoRow
+                  key={column.label}
+                  label={column.label}
+                  info={column.info}
+                />
               ))}
             </tbody>
           </table>
