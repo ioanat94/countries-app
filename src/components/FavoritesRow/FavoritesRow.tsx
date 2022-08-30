@@ -14,9 +14,9 @@ function FavoritesRow(favorite: Favorite) {
 
   return (
     <div
-      className={`${
-        theme === 'dark' ? 'text-greyishBlueLight' : 'text-darkerBlue'
-      } flex items-center justify-between py-6`}
+      className={`fav-row ${
+        theme === 'dark' ? 'fav-row-dark' : 'fav-row-light'
+      }`}
     >
       <div className='flex items-center gap-4'>
         <img

@@ -10,11 +10,9 @@ function FavoritesHeader() {
 
   return (
     <div
-      className={`${
-        theme === 'dark'
-          ? 'text-greyishBlue border-b-greyishBlue'
-          : 'text-darkBlue border-b-darkBlue'
-      } flex items-center justify-between border-b h-[80px]`}
+      className={`fav-header ${
+        theme === 'dark' ? 'fav-header-dark' : 'fav-header-light'
+      }`}
     >
       FAVORITES
       <button

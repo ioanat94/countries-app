@@ -28,9 +28,9 @@ function Search() {
         type='search'
         placeholder='Search...'
         onChange={handleSearch}
-        className={`${
-          theme === 'dark' ? 'bg-darkBlue text-greyishBlueLight' : 'greyishBlue'
-        } h-10 w-80 indent-12 rounded`}
+        className={`search ${
+          theme === 'dark' ? 'search-dark' : 'search-light'
+        }`}
       />
     </div>
   )

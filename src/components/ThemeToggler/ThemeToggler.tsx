@@ -17,7 +17,7 @@ function ThemeToggler() {
     >
       <img
         src={theme === 'dark' ? LightTheme : DarkTheme}
-        alt='Light theme icon'
+        alt='Theme icon'
         className='min-w-[32px] max-w-[32px] cursor-pointer'
       />
     </button>

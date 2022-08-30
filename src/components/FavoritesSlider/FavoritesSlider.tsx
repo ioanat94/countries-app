@@ -15,11 +15,9 @@ function FavoritesSlider() {
 
   return (
     <div
-      className={`${
-        theme === 'dark' ? 'bg-darkerBlue' : 'bg-greyishBlueLight'
-      } text-2xl px-6 h-full min-w-full fixed top-0 right-0 transition-all drop-shadow-2xl ${
-        isOpen ? 'visible' : 'invisible'
-      } md:min-w-[400px] z-[99]`}
+      className={`fav-slider ${
+        theme === 'dark' ? 'fav-slider-dark' : 'fav-slider-light'
+      } ${isOpen ? 'visible' : 'invisible'}`}
     >
       <FavoritesHeader />
       {favorites.length > 0 &&

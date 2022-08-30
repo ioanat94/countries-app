@@ -14,11 +14,7 @@ function TableRow({ flags, name, languages, population, region }: Country) {
 
   return (
     <tr
-      className={`${
-        theme === 'dark'
-          ? 'text-greyishBlueLight border-greyishBlue'
-          : 'text-darkerBlue border-darkBlue'
-      } h-32 border-b`}
+      className={`tb-row ${theme === 'dark' ? 'tb-row-dark' : 'tb-row-light'}`}
     >
       <td className='min-w-[150px]'>
         <img src={flags.png} alt={`Flag of ${name}`} className='w-20' />

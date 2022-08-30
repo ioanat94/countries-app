@@ -1,3 +1,87 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+  .btn {
+    @apply font-bold rounded w-max px-4 py-2 border-2 md:transition-all disabled:bg-slate-50 disabled:text-slate-500 disabled:border-slate-200 disabled:pointer-events-none disabled:line-through;
+  }
+  .btn-light {
+    @apply bg-darkerBlue text-greyishBlueLight border-darkerBlue md:hover:bg-greyishBlue md:hover:text-darkerBlue;
+  }
+  .btn-dark {
+    @apply bg-greyishBlueLight text-darkerBlue border-greyishBlueLight md:hover:bg-darkBlue md:hover:text-greyishBlueLight;
+  }
+  .country-card {
+    @apply flex flex-col items-center min-w-[90vw] mx-4 px-20 py-5 rounded-xl drop-shadow-2xl md:min-w-[50vw] md:pt-20 md:pb-10;
+  }
+  .country-card-light {
+    @apply bg-darkBlue;
+  }
+  .country-card-dark {
+    @apply bg-greyishBlue;
+  }
+  .fav-header {
+    @apply flex items-center justify-between border-b h-[80px];
+  }
+  .fav-header-light {
+    @apply text-darkBlue border-b-darkBlue;
+  }
+  .fav-header-dark {
+    @apply text-greyishBlue border-b-greyishBlue;
+  }
+  .fav-row {
+    @apply flex items-center justify-between py-6;
+  }
+  .fav-row-light {
+    @apply text-darkerBlue;
+  }
+  .fav-row-dark {
+    @apply text-greyishBlueLight;
+  }
+  .fav-slider {
+    @apply text-2xl px-6 h-full min-w-full fixed top-0 right-0 transition-all drop-shadow-2xl md:min-w-[400px] z-[99];
+  }
+  .fav-slider-light {
+    @apply bg-greyishBlueLight;
+  }
+  .fav-slider-dark {
+    @apply bg-darkerBlue;
+  }
+  .nav {
+    @apply h-40 flex items-center justify-between md:h-20 px-6 sticky top-0 z-50;
+  }
+  .nav-light {
+    @apply bg-greyishBlueLight;
+  }
+  .nav-dark {
+    @apply bg-darkerBlue;
+  }
+  .search {
+    @apply h-10 w-80 indent-12 rounded;
+  }
+  .search-light {
+    @apply bg-greyishBlue text-darkerBlue;
+  }
+  .search-dark {
+    @apply bg-darkBlue text-greyishBlueLight;
+  }
+  .tb-head {
+    @apply h-20 text-lg font-semibold border-b;
+  }
+  .tb-head-light {
+    @apply text-darkBlue border-darkBlue;
+  }
+  .tb-head-dark {
+    @apply text-greyishBlue border-greyishBlue;
+  }
+  .tb-row {
+    @apply h-32 border-b;
+  }
+  .tb-row-light {
+    @apply text-darkerBlue border-darkBlue;
+  }
+  .tb-row-dark {
+    @apply text-greyishBlueLight border-greyishBlue;
+  }
+}

@@ -10,11 +10,9 @@ function TableHead() {
 
   return (
     <thead
-      className={`${
-        theme === 'dark'
-          ? 'text-greyishBlue border-greyishBlue'
-          : 'text-darkBlue border-darkBlue'
-      } h-20 text-lg font-semibold border-b`}
+      className={`tb-head ${
+        theme === 'dark' ? 'tb-head-dark' : 'tb-head-light'
+      }`}
     >
       <tr>
         <td>Flag</td>

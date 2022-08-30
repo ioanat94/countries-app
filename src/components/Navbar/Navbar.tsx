@@ -14,11 +14,7 @@ function Navbar() {
   const dispatch = useDispatch<AppDispatch>()
 
   return (
-    <div
-      className={`${
-        theme === 'dark' ? 'bg-darkerBlue' : 'bg-greyishBlueLight'
-      } h-40 flex items-center justify-between md:h-20 px-6 sticky top-0 z-50`}
-    >
+    <div className={`nav ${theme === 'dark' ? 'nav-dark' : 'nav-light'}`}>
       <div className='flex flex-col gap-4 md:flex-row md:gap-8 md:items-center'>
         <Link
           to='/'
