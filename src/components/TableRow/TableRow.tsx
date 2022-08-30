@@ -8,8 +8,8 @@ import { toggleSlider } from '../../redux/slices/sliderSlice'
 import AddFavoriteBtn from '../AddFavoriteBtn/AddFavoriteBtn'
 
 function TableRow({ flags, name, languages, population, region }: Country) {
-  const theme: string = useSelector((state: RootState) => state.theme.theme)
-  const isOpen: boolean = useSelector((state: RootState) => state.slider.isOpen)
+  const theme = useSelector((state: RootState) => state.theme.theme)
+  const isOpen = useSelector((state: RootState) => state.slider.isOpen)
   const dispatch = useDispatch<AppDispatch>()
 
   const handleToggleSlider = () => {

@@ -5,10 +5,8 @@ import { AppDispatch, RootState } from '../../redux/store'
 import { add, Favorite } from '../../redux/slices/favoritesSlice'
 
 function AddFavoriteBtn(favorite: Favorite) {
-  const theme: string = useSelector((state: RootState) => state.theme.theme)
-  const favorites: Favorite[] = useSelector(
-    (state: RootState) => state.favorites.items
-  )
+  const theme = useSelector((state: RootState) => state.theme.theme)
+  const favorites = useSelector((state: RootState) => state.favorites.items)
   const dispatch = useDispatch<AppDispatch>()
 
   const isInCart = favorites.some(

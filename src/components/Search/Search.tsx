@@ -5,7 +5,7 @@ import { AppDispatch, RootState } from '../../redux/store'
 import { search } from '../../redux/slices/countriesSlice'
 
 function Search() {
-  const theme: string = useSelector((state: RootState) => state.theme.theme)
+  const theme = useSelector((state: RootState) => state.theme.theme)
   const dispatch = useDispatch<AppDispatch>()
   const [searchTerm, setSearchTerm] = useState<string>('')
 

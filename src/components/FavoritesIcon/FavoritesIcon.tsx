@@ -7,7 +7,7 @@ import EmptyHeart from '../../assets/heart-empty.png'
 import FullHeart from '../../assets/heart-full.png'
 
 function FavoritesIcon() {
-  const count: number = useSelector((state: RootState) => state.favorites.count)
+  const count = useSelector((state: RootState) => state.favorites.count)
   const dispatch = useDispatch<AppDispatch>()
 
   const handleToggleSlider = () => {

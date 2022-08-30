@@ -7,7 +7,7 @@ import LightTheme from '../../assets/light.png'
 import DarkTheme from '../../assets/dark.png'
 
 function ThemeToggler() {
-  const theme: string = useSelector((state: RootState) => state.theme.theme)
+  const theme = useSelector((state: RootState) => state.theme.theme)
   const dispatch = useDispatch<AppDispatch>()
 
   const handleToggleTheme = () => {

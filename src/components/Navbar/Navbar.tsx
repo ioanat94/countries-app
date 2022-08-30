@@ -9,8 +9,8 @@ import Search from '../Search/Search'
 import ThemeToggler from '../ThemeToggler/ThemeToggler'
 
 function Navbar() {
-  const theme: string = useSelector((state: RootState) => state.theme.theme)
-  const isOpen: boolean = useSelector((state: RootState) => state.slider.isOpen)
+  const theme = useSelector((state: RootState) => state.theme.theme)
+  const isOpen = useSelector((state: RootState) => state.slider.isOpen)
   const dispatch = useDispatch<AppDispatch>()
 
   const handleToggleSlider = () => {

@@ -7,7 +7,7 @@ import Navbar from '../components/Navbar/Navbar'
 import FavoritesSlider from '../components/FavoritesSlider/FavoritesSlider'
 
 function Country() {
-  const theme: string = useSelector((state: RootState) => state.theme.theme)
+  const theme = useSelector((state: RootState) => state.theme.theme)
 
   return (
     <div

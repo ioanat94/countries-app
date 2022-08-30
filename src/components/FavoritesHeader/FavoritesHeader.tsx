@@ -5,7 +5,7 @@ import { AppDispatch, RootState } from '../../redux/store'
 import { toggleSlider } from '../../redux/slices/sliderSlice'
 
 function FavoritesHeader() {
-  const theme: string = useSelector((state: RootState) => state.theme.theme)
+  const theme = useSelector((state: RootState) => state.theme.theme)
   const dispatch = useDispatch<AppDispatch>()
 
   const handleToggleSlider = () => {

@@ -7,7 +7,7 @@ import Navbar from '../components/Navbar/Navbar'
 import Table from '../components/Table/Table'
 
 function Home() {
-  const theme: string = useSelector((state: RootState) => state.theme.theme)
+  const theme = useSelector((state: RootState) => state.theme.theme)
 
   return (
     <div

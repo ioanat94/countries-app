@@ -8,8 +8,8 @@ import { toggleSlider } from '../../redux/slices/sliderSlice'
 import RemoveFavoriteBtn from '../RemoveFavoriteBtn/RemoveFavoriteBtn'
 
 function FavoritesRow(favorite: Favorite) {
-  const theme: string = useSelector((state: RootState) => state.theme.theme)
-  const isOpen: boolean = useSelector((state: RootState) => state.slider.isOpen)
+  const theme = useSelector((state: RootState) => state.theme.theme)
+  const isOpen = useSelector((state: RootState) => state.slider.isOpen)
   const dispatch = useDispatch<AppDispatch>()
 
   const handleToggleSlider = () => {

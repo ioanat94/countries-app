@@ -11,7 +11,7 @@ type ParamTypes = {
 }
 
 function CountryInfo() {
-  const theme: string = useSelector((state: RootState) => state.theme.theme)
+  const theme = useSelector((state: RootState) => state.theme.theme)
   const { countries } = useSelector((state: RootState) => state)
   const { param }: ParamTypes = useParams<ParamTypes>()
   const dispatch = useDispatch<AppDispatch>()
