@@ -38,7 +38,7 @@ function CountryInfo() {
 
   return countries ? (
     <div className='flex flex-col items-center'>
-      <div className='flex flex-col justify-center gap-10 pb-10 md:flex-row'>
+      <div className='flex flex-col justify-center items-center gap-10 pb-10 md:flex-row'>
         <img src={flags.png} alt='Country flag' className='drop-shadow-2xl' />
         <div>
           <table
