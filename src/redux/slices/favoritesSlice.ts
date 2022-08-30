@@ -37,7 +37,7 @@ export const favoritesSlice = createSlice({
   initialState,
   reducers: {
     add: (state: FavoritesState, action: PayloadAction<Favorite>) => {
-      state.items.push(action.payload)
+      state.items = [...state.items, action.payload]
       state.count += 1
       localStorage.setItem('favorites', JSON.stringify(state.items))
     },
