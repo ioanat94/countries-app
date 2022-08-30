@@ -84,4 +84,10 @@
   .tb-row-dark {
     @apply text-greyishBlueLight border-greyishBlue;
   }
+  .page-nb {
+    @apply rounded-full px-2;
+  }
+  .page-nb-active {
+    @apply bg-greyishBlueLight text-darkerBlue;
+  }
 }
