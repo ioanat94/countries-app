@@ -45,27 +45,35 @@ function Pagination({
             1
           </button>
         </li>
-        {(currentPage <= 3 || currentPage >= numberOfPages - 2) && (
-          <li>
-            <button
-              onClick={() => setCurrentPage(2)}
-              className={`page-nb ${currentPage === 2 ? 'page-nb-active' : ''}`}
-            >
-              2
-            </button>
-          </li>
-        )}
-        {(currentPage <= 3 || currentPage >= numberOfPages - 2) && (
-          <li>
-            <button
-              onClick={() => setCurrentPage(3)}
-              className={`page-nb ${currentPage === 3 ? 'page-nb-active' : ''}`}
-            >
-              3
-            </button>
-          </li>
-        )}
-        {currentPage >= 4 && (
+        {/* eslint-disable  */}
+        {(currentPage <= 3 || currentPage >= numberOfPages - 2) &&
+          numberOfPages > 1 && (
+            <li>
+              <button
+                onClick={() => setCurrentPage(2)}
+                className={`page-nb ${
+                  currentPage === 2 ? 'page-nb-active' : ''
+                }`}
+              >
+                2
+              </button>
+            </li>
+          )}
+        {(currentPage <= 3 || currentPage >= numberOfPages - 2) &&
+          numberOfPages > 2 && (
+            <li>
+              <button
+                onClick={() => setCurrentPage(3)}
+                className={`page-nb ${
+                  currentPage === 3 ? 'page-nb-active' : ''
+                }`}
+              >
+                3
+              </button>
+            </li>
+          )}
+        {/* eslint-enable  */}
+        {currentPage >= 4 && numberOfPages > 6 && (
           <li>
             <button disabled>...</button>
           </li>
@@ -84,45 +92,51 @@ function Pagination({
               </button>
             </li>
           ))}
-        {currentPage < numberOfPages - 2 && (
+        {currentPage < numberOfPages - 2 && numberOfPages > 6 && (
           <li>
             <button disabled>...</button>
           </li>
         )}
-        {(currentPage >= numberOfPages - 2 || currentPage < 4) && (
+        {/* eslint-disable  */}
+        {(currentPage >= numberOfPages - 2 || currentPage < 4) &&
+          numberOfPages > 5 && (
+            <li>
+              <button
+                onClick={() => setCurrentPage(numberOfPages - 2)}
+                className={`page-nb ${
+                  currentPage === numberOfPages - 2 ? 'page-nb-active' : ''
+                }`}
+              >
+                {numberOfPages - 2}
+              </button>
+            </li>
+          )}
+        {(currentPage >= numberOfPages - 2 || currentPage < 4) &&
+          numberOfPages > 4 && (
+            <li>
+              <button
+                onClick={() => setCurrentPage(numberOfPages - 1)}
+                className={`page-nb ${
+                  currentPage === numberOfPages - 1 ? 'page-nb-active' : ''
+                }`}
+              >
+                {numberOfPages - 1}
+              </button>
+            </li>
+          )}
+        {/* eslint-enable  */}
+        {numberOfPages > 3 && (
           <li>
             <button
-              onClick={() => setCurrentPage(numberOfPages - 2)}
+              onClick={() => setCurrentPage(numberOfPages)}
               className={`page-nb ${
-                currentPage === numberOfPages - 2 ? 'page-nb-active' : ''
+                currentPage === numberOfPages ? 'page-nb-active' : ''
               }`}
             >
-              {numberOfPages - 2}
+              {numberOfPages}
             </button>
           </li>
         )}
-        {(currentPage >= numberOfPages - 2 || currentPage < 4) && (
-          <li>
-            <button
-              onClick={() => setCurrentPage(numberOfPages - 1)}
-              className={`page-nb ${
-                currentPage === numberOfPages - 1 ? 'page-nb-active' : ''
-              }`}
-            >
-              {numberOfPages - 1}
-            </button>
-          </li>
-        )}
-        <li>
-          <button
-            onClick={() => setCurrentPage(numberOfPages)}
-            className={`page-nb ${
-              currentPage === numberOfPages ? 'page-nb-active' : ''
-            }`}
-          >
-            {numberOfPages}
-          </button>
-        </li>
         {currentPage < numberOfPages && (
           <li>
             <button onClick={nextPage}>Next</button>
