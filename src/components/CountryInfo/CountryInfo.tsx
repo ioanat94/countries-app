@@ -6,6 +6,7 @@ import { AppDispatch, RootState } from '../../redux/store'
 import { fetchCountryThunk } from '../../redux/slices/countriesSlice'
 import AddFavoriteBtn from '../AddFavoriteBtn/AddFavoriteBtn'
 import CountryInfoRow from '../CountryInfoRow/CountryInfoRow'
+import SkeletonCard from '../SkeletonCard/SkeletonCard'
 
 type ParamTypes = {
   param: string
@@ -36,7 +37,9 @@ function CountryInfo() {
     { label: 'Region:', info: region },
   ]
 
-  return countries ? (
+  return countries.isLoading ? (
+    <SkeletonCard />
+  ) : countries ? (
     <div className='flex flex-col items-center'>
       <div className='flex flex-col justify-center items-center gap-10 pb-10 md:flex-row'>
         <img src={flags.png} alt='Country flag' className='drop-shadow-2xl' />
