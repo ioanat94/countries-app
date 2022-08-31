@@ -29,9 +29,11 @@
   "scripts": {
     "ts-coverage": "typescript-coverage-report",
     "watch:tailwind": "npx tailwindcss -i ./src/input.css -o ./src/output.css --watch",
+    "tailwind": "npx tailwindcss -i ./src/input.css -o ./src/output.css",
     "start": "react-scripts start",
     "dev": "run-p watch:tailwind start",
-    "build": "react-scripts build",
+    "prebuild": "react-scripts build",
+    "build": "run-p tailwind prebuild",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "lint": "eslint --fix '**/*.{ts,tsx}'"
