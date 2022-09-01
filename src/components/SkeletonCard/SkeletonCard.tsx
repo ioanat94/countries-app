@@ -14,8 +14,7 @@ function SkeletonCard() {
               <tbody>
                 {columns.map(() => (
                   <div className='flex gap-10'>
-                    <Skeleton width='200px' height='30px' />
-                    <Skeleton width='200px' height='30px' />
+                    <Skeleton width='300px' height='30px' />
                   </div>
                 ))}
               </tbody>
