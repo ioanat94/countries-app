@@ -94,7 +94,9 @@ export const countriesSlice = createSlice({
       }
     },
     filterRegion: (state: CountriesState, action: PayloadAction<string>) => {
-      state.items = state.items.filter((item) => item.region === action.payload)
+      state.items = state.countriesRef.filter(
+        (item) => item.region === action.payload
+      )
     },
   },
   extraReducers: (builder) => {
