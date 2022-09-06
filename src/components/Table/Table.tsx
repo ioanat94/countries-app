@@ -17,8 +17,6 @@ function Table() {
     dispatch(fetchCountriesThunk())
   }, [dispatch])
 
-  const isSearching = countries.filteredItems.length > 0
-
   const handleRenderRows = (countries: Country[]) => {
     return countries.map((country) => (
       <TableRow key={country.name.common} {...country} />
@@ -35,17 +33,10 @@ function Table() {
     indexOfFirstCountry,
     indexOfLastCountry
   )
-  const currentFilteredCountries = countries.filteredItems.slice(
-    indexOfFirstCountry,
-    indexOfLastCountry
-  )
-  const numberOfPages = isSearching
-    ? Math.ceil(countries.filteredItems.length / countriesPerPage)
-    : Math.ceil(countries.items.length / countriesPerPage)
+
+  const numberOfPages = Math.ceil(countries.items.length / countriesPerPage)
 
   const loadingCountries = countries.isLoading
-  const loadedAndUserSearching = !loadingCountries && isSearching
-  const loadedAndUserNotSearching = !loadingCountries && !isSearching
 
   return (
     <div className='px-10 py-10 flex flex-col gap-6 xl:px-20'>
@@ -54,12 +45,11 @@ function Table() {
         <table className='border-collapse w-full'>
           <TableHead />
           <tbody>
-            {loadingCountries && (
+            {loadingCountries ? (
               <SkeletonTable countriesPerPage={countriesPerPage} />
+            ) : (
+              handleRenderRows(currentCountries)
             )}
-            {loadedAndUserSearching &&
-              handleRenderRows(currentFilteredCountries)}
-            {loadedAndUserNotSearching && handleRenderRows(currentCountries)}
           </tbody>
         </table>
       </div>

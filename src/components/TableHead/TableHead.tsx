@@ -16,20 +16,9 @@ function TableHead() {
   const dispatch = useDispatch<AppDispatch>()
 
   const [regionOptions, setRegionOptions] = useState<OptionType[]>([])
-  const isSearching = countries.filteredItems.length > 0
-
-  const handleFilteredOptions = (regions: string[], options: OptionType[]) => {
-    countries.filteredItems.map((item) => regions.push(item.region))
-    const uniqueOptions = [...new Set(regions)]
-    uniqueOptions.map((option) =>
-      options.push({ value: option, label: option })
-    )
-
-    return options
-  }
 
   const handleOptions = (regions: string[], options: OptionType[]) => {
-    countries.items.map((item) => regions.push(item.region))
+    countries.countriesRef.map((item) => regions.push(item.region))
     const uniqueOptions = [...new Set(regions)]
     uniqueOptions.map((option) =>
       options.push({ value: option, label: option })
@@ -47,11 +36,9 @@ function TableHead() {
     const regions: string[] = []
     const options: OptionType[] = []
 
-    isSearching
-      ? handleFilteredOptions(regions, options)
-      : handleOptions(regions, options)
+    handleOptions(regions, options)
     setRegionOptions(options)
-  }, [countries, isSearching]) // eslint-disable-line react-hooks/exhaustive-deps
+  }, [countries]) // eslint-disable-line react-hooks/exhaustive-deps
 
   const handleAToZ = () => {
     dispatch(sort('aToZ'))

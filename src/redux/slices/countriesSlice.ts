@@ -18,7 +18,7 @@ export type Country = {
 export interface CountriesState {
   items: Country[]
   singleItem: Country
-  filteredItems: Country[]
+  countriesRef: Country[]
   isLoading: boolean
 }
 
@@ -35,7 +35,7 @@ const initialState: CountriesState = {
     population: 0,
     region: '',
   },
-  filteredItems: [],
+  countriesRef: [],
   isLoading: false,
 }
 
@@ -72,55 +72,42 @@ export const countriesSlice = createSlice({
   initialState,
   reducers: {
     search: (state: CountriesState, action: PayloadAction<string>) => {
-      const filteredItems = state.items.filter((item) =>
+      const filteredItems = state.countriesRef.filter((item) =>
         item.name.common.toLowerCase().includes(action.payload.toLowerCase())
       )
 
-      state.filteredItems = filteredItems
+      state.items = filteredItems
     },
     sort: (state: CountriesState, action: PayloadAction<string>) => {
       if (action.payload === 'aToZ') {
         state.items = state.items.sort((a, b) =>
           a.name.common.toLowerCase().localeCompare(b.name.common)
         )
-        state.filteredItems = state.filteredItems.sort((a, b) =>
-          a.name.common.toLowerCase().localeCompare(b.name.common)
-        )
       } else if (action.payload === 'zToA') {
         state.items = state.items.sort((a, b) =>
           b.name.common.toLowerCase().localeCompare(a.name.common)
         )
-        state.filteredItems = state.filteredItems.sort((a, b) =>
-          b.name.common.toLowerCase().localeCompare(a.name.common)
-        )
       } else if (action.payload === 'lowToHigh') {
         state.items = state.items.sort((a, b) => a.population - b.population)
-        state.filteredItems = state.filteredItems.sort(
-          (a, b) => a.population - b.population
-        )
       } else if (action.payload === 'highToLow') {
         state.items = state.items.sort((a, b) => b.population - a.population)
-        state.filteredItems = state.filteredItems.sort(
-          (a, b) => b.population - a.population
-        )
       }
     },
     filterRegion: (state: CountriesState, action: PayloadAction<string>) => {
       state.items = state.items.filter((item) => item.region === action.payload)
-      state.filteredItems = state.filteredItems.filter(
-        (item) => item.region === action.payload
-      )
     },
   },
   extraReducers: (builder) => {
     builder.addCase(fetchCountriesThunk.pending, (state: CountriesState) => {
       state.items = []
+      state.countriesRef = []
       state.isLoading = true
     })
     builder.addCase(
       fetchCountriesThunk.fulfilled,
       (state: CountriesState, action) => {
         state.items = action.payload.data
+        state.countriesRef = action.payload.data
         state.isLoading = false
       }
     )
