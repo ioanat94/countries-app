@@ -3,7 +3,11 @@ import { useDispatch, useSelector } from 'react-redux'
 import Select from 'react-select'
 
 import { AppDispatch, RootState } from '../../redux/store'
-import { filterRegion, sort } from '../../redux/slices/countriesSlice'
+import {
+  filterLanguage,
+  filterRegion,
+  sort,
+} from '../../redux/slices/countriesSlice'
 
 type OptionType = {
   value: string
@@ -16,28 +20,55 @@ function TableHead() {
   const dispatch = useDispatch<AppDispatch>()
 
   const [regionOptions, setRegionOptions] = useState<OptionType[]>([])
+  const [languageOptions, setLanguageOptions] = useState<OptionType[]>([])
 
-  const handleOptions = (regions: string[], options: OptionType[]) => {
+  const handleRegionOptions = (
+    regions: string[],
+    regionOptions: OptionType[]
+  ) => {
     countries.countriesRef.map((item) => regions.push(item.region))
-    const uniqueOptions = [...new Set(regions)]
-    uniqueOptions.map((option) =>
-      options.push({ value: option, label: option })
+    const uniqueRegionOptions = [...new Set(regions)]
+    uniqueRegionOptions.sort()
+    uniqueRegionOptions.map((option) =>
+      regionOptions.push({ value: option, label: option })
     )
 
-    return options
+    return regionOptions
+  }
+
+  const handleLanguageOptions = (
+    languages: string[],
+    languageOptions: OptionType[]
+  ) => {
+    countries.countriesRef.map((item) =>
+      Object.values(item.languages).map((language) => languages.push(language))
+    )
+    const uniqueLanguageOptions = [...new Set(languages)]
+    uniqueLanguageOptions.sort()
+    uniqueLanguageOptions.map((option) =>
+      languageOptions.push({ value: option, label: option })
+    )
+
+    return languageOptions
   }
 
   const handleRegionClick = (e: any) => dispatch(filterRegion(e.value))
+  const handleLanguageClick = (e: any) => dispatch(filterLanguage(e.value))
   const handleReset = () => {
     window.location.reload()
   }
 
   useEffect(() => {
     const regions: string[] = []
-    const options: OptionType[] = []
+    const languages: string[] = []
+    const regionOptions: OptionType[] = []
+    const languageOptions: OptionType[] = []
 
-    handleOptions(regions, options)
-    setRegionOptions(options)
+    handleRegionOptions(regions, regionOptions)
+    setRegionOptions(regionOptions)
+
+    handleLanguageOptions(languages, languageOptions)
+    setLanguageOptions(languageOptions)
   }, [countries]) // eslint-disable-line react-hooks/exhaustive-deps
 
   const handleAToZ = () => {
@@ -83,7 +114,14 @@ function TableHead() {
             />
           </button>
         </td>
-        <td>Languages</td>
+        <td>
+          Languages
+          <Select
+            options={languageOptions}
+            onChange={handleLanguageClick}
+            className='text-darkBlue'
+          />
+        </td>
         <td>
           Population
           <button onClick={handleLowToHigh} className='w-6 ml-2'>

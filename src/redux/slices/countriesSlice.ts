@@ -98,6 +98,11 @@ export const countriesSlice = createSlice({
         (item) => item.region === action.payload
       )
     },
+    filterLanguage: (state: CountriesState, action: PayloadAction<string>) => {
+      state.items = state.countriesRef.filter((item) =>
+        Object.values(item.languages).includes(action.payload)
+      )
+    },
   },
   extraReducers: (builder) => {
     builder.addCase(fetchCountriesThunk.pending, (state: CountriesState) => {
@@ -137,6 +142,7 @@ export const countriesSlice = createSlice({
   },
 })
 
-export const { search, sort, filterRegion } = countriesSlice.actions
+export const { search, sort, filterRegion, filterLanguage } =
+  countriesSlice.actions
 
 export default countriesSlice.reducer

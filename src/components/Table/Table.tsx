@@ -42,7 +42,7 @@ function Table() {
     <div className='px-10 py-10 flex flex-col gap-6 xl:px-20'>
       {/* Wrapping in div for overflow-auto to work */}
       <div className='overflow-auto'>
-        <table className='border-collapse w-full'>
+        <table className='min-h-[400px] border-collapse w-full'>
           <TableHead />
           <tbody>
             {loadingCountries ? (
