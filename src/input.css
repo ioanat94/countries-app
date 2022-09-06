@@ -67,7 +67,7 @@
     @apply bg-darkBlue text-greyishBlueLight;
   }
   .tb-head {
-    @apply h-20 text-lg font-semibold border-b;
+    @apply h-32 text-lg font-semibold border-b;
   }
   .tb-head-light {
     @apply text-darkBlue border-darkBlue;

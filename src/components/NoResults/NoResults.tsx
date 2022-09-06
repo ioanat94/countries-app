@@ -7,7 +7,7 @@ function NoResults() {
 
   return (
     <div
-      className={`absolute flex items-center justify-center w-[calc(100vw-80px)] h-[400px] ${
+      className={`absolute flex items-center justify-center w-[calc(100vw-80px)] h-[275px] ${
         theme === 'dark' ? 'text-greyishBlueLight' : 'text-darkerBlue'
       } text-2xl`}
     >

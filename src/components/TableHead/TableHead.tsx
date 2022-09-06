@@ -94,8 +94,8 @@ function TableHead() {
       }`}
     >
       <tr>
-        <td>Flag</td>
-        <td>
+        <td className='min-w-[150px]'>Flag</td>
+        <td className='min-w-[150px]'>
           Name
           <button onClick={handleAToZ} className='w-6 ml-2'>
             <img
@@ -114,15 +114,15 @@ function TableHead() {
             />
           </button>
         </td>
-        <td>
+        <td className='min-w-[150px]'>
           Languages
           <Select
             options={languageOptions}
             onChange={handleLanguageClick}
-            className='text-darkBlue'
+            className='text-darkBlue w-[90%]'
           />
         </td>
-        <td>
+        <td className='min-w-[170px]'>
           Population
           <button onClick={handleLowToHigh} className='w-6 ml-2'>
             <img
@@ -141,15 +141,15 @@ function TableHead() {
             />
           </button>
         </td>
-        <td>
+        <td className='min-w-[150px]'>
           Region
           <Select
             options={regionOptions}
             onChange={handleRegionClick}
-            className='text-darkBlue'
+            className='text-darkBlue w-[90%]'
           />
         </td>
-        <td>
+        <td className='min-w-[150px]'>
           <button
             onClick={handleReset}
             className={`ml-10 px-3 py-1 border-2 ${
