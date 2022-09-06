@@ -7,6 +7,7 @@ import TableHead from '../TableHead/TableHead'
 import TableRow from '../TableRow/TableRow'
 import Pagination from '../Pagination/Pagination'
 import SkeletonTable from '../SkeletonTable/SkeletonTable'
+import NoResults from '../NoResults/NoResults'
 
 function Table() {
   const { countries } = useSelector((state: RootState) => state)
@@ -37,6 +38,8 @@ function Table() {
   const numberOfPages = Math.ceil(countries.items.length / countriesPerPage)
 
   const loadingCountries = countries.isLoading
+  const noCountries = !loadingCountries && currentCountries.length === 0
+  const foundCountries = !loadingCountries && currentCountries.length > 0
 
   return (
     <div className='px-10 py-10 flex flex-col gap-6 xl:px-20'>
@@ -45,11 +48,11 @@ function Table() {
         <table className='min-h-[400px] border-collapse w-full'>
           <TableHead />
           <tbody>
-            {loadingCountries ? (
+            {loadingCountries && (
               <SkeletonTable countriesPerPage={countriesPerPage} />
-            ) : (
-              handleRenderRows(currentCountries)
             )}
+            {noCountries && <NoResults />}
+            {foundCountries && handleRenderRows(currentCountries)}
           </tbody>
         </table>
       </div>
