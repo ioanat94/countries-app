@@ -19,6 +19,9 @@ export interface CountriesState {
   items: Country[]
   singleItem: Country
   countriesRef: Country[]
+  filteredItems: Country[]
+  isRegionFilter: boolean
+  isLanguageFilter: boolean
   isLoading: boolean
 }
 
@@ -36,6 +39,9 @@ const initialState: CountriesState = {
     region: '',
   },
   countriesRef: [],
+  filteredItems: [],
+  isRegionFilter: false,
+  isLanguageFilter: false,
   isLoading: false,
 }
 
@@ -72,11 +78,17 @@ export const countriesSlice = createSlice({
   initialState,
   reducers: {
     search: (state: CountriesState, action: PayloadAction<string>) => {
-      const filteredItems = state.countriesRef.filter((item) =>
-        item.name.common.toLowerCase().includes(action.payload.toLowerCase())
-      )
-
-      state.items = filteredItems
+      if (state.filteredItems.length === 0) {
+        const filtered = state.countriesRef.filter((item) =>
+          item.name.common.toLowerCase().includes(action.payload.toLowerCase())
+        )
+        state.items = filtered
+      } else {
+        const filtered = state.filteredItems.filter((item) =>
+          item.name.common.toLowerCase().includes(action.payload.toLowerCase())
+        )
+        state.items = filtered
+      }
     },
     sort: (state: CountriesState, action: PayloadAction<string>) => {
       if (action.payload === 'aToZ') {
@@ -94,14 +106,30 @@ export const countriesSlice = createSlice({
       }
     },
     filterRegion: (state: CountriesState, action: PayloadAction<string>) => {
-      state.items = state.countriesRef.filter(
-        (item) => item.region === action.payload
-      )
+      if (state.filteredItems.length === 0 || state.isRegionFilter) {
+        state.items = state.countriesRef.filter(
+          (item) => item.region === action.payload
+        )
+        state.filteredItems = state.items
+        state.isRegionFilter = true
+      } else {
+        state.items = state.filteredItems.filter(
+          (item) => item.region === action.payload
+        )
+      }
     },
     filterLanguage: (state: CountriesState, action: PayloadAction<string>) => {
-      state.items = state.countriesRef.filter((item) =>
-        Object.values(item.languages).includes(action.payload)
-      )
+      if (state.filteredItems.length === 0 || state.isLanguageFilter) {
+        state.items = state.countriesRef.filter((item) =>
+          Object.values(item.languages).includes(action.payload)
+        )
+        state.filteredItems = state.items
+        state.isLanguageFilter = true
+      } else {
+        state.items = state.filteredItems.filter((item) =>
+          Object.values(item.languages).includes(action.payload)
+        )
+      }
     },
   },
   extraReducers: (builder) => {
