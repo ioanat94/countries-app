@@ -13,7 +13,7 @@
     @apply bg-greyishBlueLight text-darkerBlue border-greyishBlueLight md:hover:bg-darkBlue md:hover:text-greyishBlueLight;
   }
   .country-card {
-    @apply flex flex-col items-center min-w-[90vw] mx-4 px-20 py-5 rounded-xl drop-shadow-2xl md:min-w-[50vw] md:pt-20 md:pb-10;
+    @apply flex flex-col items-center min-w-[90vw] mx-4 px-20 py-5 rounded-xl drop-shadow-2xl md:min-w-[50vw] md:pt-20 md:pb-10 xl:min-w-[20vw];
   }
   .country-card-light {
     @apply bg-darkBlue;
